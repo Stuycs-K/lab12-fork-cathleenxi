@@ -6,12 +6,14 @@
 int main(){
   pid_t child1;
   pid_t child2;
+  printf("%d about to create 2 child processes\n", getpid());
   child1 = fork();
   if ( child1 == 0){ //child one stuff
     int pid = getpid();
     srand(pid);
     int x = rand() % 5 + 1;
-    printf("Child pid: %d, Wait time: %d\n", pid, x);
+    sleep(x);
+    printf("%d finished after %d seconds\n", pid, x);
   }
   else{
   child2 = fork();
@@ -23,8 +25,9 @@ int main(){
     int pid = getpid();
     srand(pid);
     int x = rand() % 5 + 1;
-    printf("Child pid: %d, Wait time: %d\n", pid, x);
+    sleep(x);
+    printf("%d finished after %d seconds\n", pid, x);
     }
   }
-
+  else if(child2 > 0)
 }
