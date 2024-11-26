@@ -8,7 +8,10 @@ int main(){
   pid_t child2;
   child1 = fork();
   if ( child1 == 0){ //child one stuff
-    printf("Hello from Child1!\n");
+    int pid = getpid();
+    srand(pid);
+    int x = rand() % 5 + 1;
+    printf("Child pid: %d, Wait time: %d\n", pid, x);
   }
   else{
   child2 = fork();
@@ -17,7 +20,10 @@ int main(){
     exit(1);
   }
   else if ( child2 == 0){ //child two stuff
-      printf("Hello from Child2!\n");
+    int pid = getpid();
+    srand(pid);
+    int x = rand() % 5 + 1;
+    printf("Child pid: %d, Wait time: %d\n", pid, x);
     }
   }
 
